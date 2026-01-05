@@ -13,7 +13,7 @@ const Home = () => {
 
     const hasFetched = useRef(false); // Track if fetch has run
 
-    const fethCryptoData = async () => {
+    const fetchCryptoData = async () => {
         try {
             const data = await fetchCryptos();
             setCryptoList(data);
@@ -54,10 +54,10 @@ const Home = () => {
 
     useEffect(() => {
         // If we have already fetched, stop here.
-        if (hasFetched.current) return;
-
-        fethCryptoData();
-        hasFetched.current = true; // Mark as fetched
+        // if (hasFetched.current) return;
+        const interval = setInterval(fetchCryptoData, 30000);
+        // hasFetched.current = true; // Mark as fetched
+        return (() => clearInterval(interval))
     }, [])
 
     useEffect(() => {
@@ -131,6 +131,9 @@ const Home = () => {
                     </div>
                 )
             }
+            <footer className="footer">
+                <p>Data provided by CoinGecko API • Updated every 30 seconds</p>
+            </footer>
         </div>
     )
 }
