@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { fetchCryptos } from '../api/coinGecko'
 import CryptoCard from '../components/CryptoCard';
 
@@ -10,8 +10,6 @@ const Home = () => {
     const [viewMode, setViewMode] = useState("list");
     const [sortBy, setSortBy] = useState("market_cap_rank");
     const [searchQuery, setSearchQuery] = useState("");
-
-    const hasFetched = useRef(false); // Track if fetch has run
 
     const fetchCryptoData = async () => {
         try {

@@ -32,7 +32,7 @@ const CoinDetail = () => {
     const loadCoinChartData = async () => {
         try {
             const data = await fetchChartData(id);
-            const formattedData = data.prices.map((price, key) => ({
+            const formattedData = data.prices.map((price) => ({
                 time: new Date(price[0]).toLocaleDateString("en-US", {
                     month: "short",
                     day: "numeric"
